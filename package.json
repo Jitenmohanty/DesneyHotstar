@@ -12,6 +12,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "appwrite": "^13.0.0",
+    "firebase": "^8.4.1",
+    "firebase-tools": "^9.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
