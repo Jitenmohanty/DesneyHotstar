@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import ImgSlider from "./ImgSlider";
@@ -12,14 +12,10 @@ import { storage } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 const Home = () => {
-  let recommend = [];
-  let original = [];
-  let newDisneys = [];
-  let trending = [];
-
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,15 +29,26 @@ const Home = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(data)
+        console.log(data);
         const categorizedMovies = {
-          recommend: data.filter((movie) => movie.type === "recommend"),
+          recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
           newDisney: data.filter((movie) => movie.type === "new"),
           original: data.filter((movie) => movie.type === "original"),
           trending: data.filter((movie) => movie.type === "trending"),
         };
-
-        dispatch(setMovies(categorizedMovies));
+        console.log(categorizedMovies.recommend);
+        console.log(categorizedMovies.newDisney);
+        console.log(categorizedMovies.original);
+        console.log(categorizedMovies.trending);
+        dispatch(
+          setMovies({
+            recommend: categorizedMovies.recommend,
+            newDisney: categorizedMovies.newDisney,
+            original: categorizedMovies.original,
+            trending: categorizedMovies.trending,
+          })
+        );
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching movies: ", error);
       }
@@ -55,7 +62,7 @@ const Home = () => {
     <Container>
       <ImgSlider />
       <Viewers />
-      <Recomended />
+      {loading ? <h2>Loading ...</h2> : <Recomended />}
     </Container>
   );
 };
