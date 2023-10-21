@@ -16,7 +16,10 @@ const Home = () => {
   const userName = useSelector(selectUserName);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true); // Add loading state
-
+  let recommends = [];
+  let newDisneys = [];
+  let originals = [];
+  let trending = [];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,24 +33,37 @@ const Home = () => {
           ...doc.data(),
         }));
         console.log(data);
-        const categorizedMovies = {
-          recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
-          newDisney: data.filter((movie) => movie.type === "new"),
-          original: data.filter((movie) => movie.type === "original"),
-          trending: data.filter((movie) => movie.type === "trending"),
-        };
-        console.log(categorizedMovies.recommend);
-        console.log(categorizedMovies.newDisney);
-        console.log(categorizedMovies.original);
-        console.log(categorizedMovies.trending);
-        dispatch(
-          setMovies({
-            recommend: categorizedMovies.recommend,
-            newDisney: categorizedMovies.newDisney,
-            original: categorizedMovies.original,
-            trending: categorizedMovies.trending,
-          })
-        );
+        // const categorizedMovies = {
+        //   recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
+        //   newDisney: data.filter((movie) => movie.type === "new"),
+        //   original: data.filter((movie) => movie.type === "original"),
+        //   trending: data.filter((movie) => movie.type === "trending"),
+        // };
+        // console.log(categorizedMovies.recommend);
+        // console.log(categorizedMovies.newDisney);
+        // console.log(categorizedMovies.original);
+        // console.log(categorizedMovies.trending);
+        // dispatch(
+        //   setMovies({
+        //     recommend: categorizedMovies.recommend,
+        //     newDisney: categorizedMovies.newDisney,
+        //     original: categorizedMovies.original,
+        //     trending: categorizedMovies.trending,
+        //   })
+        // );
+
+        data.map((doc) => {
+          switch (doc.type) {
+            case "recommend":
+              recommends = [...recommends,{id:doc.id,...doc}]
+            case "new":
+              recommends = [...recommends,{id:doc.id,...doc}]
+            case "original":
+              recommends = [...recommends,{id:doc.id,...doc}]
+            case "recommend":
+              recommends = [...recommends,{id:doc.id,...doc}]
+          }
+        });
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movies: ", error);

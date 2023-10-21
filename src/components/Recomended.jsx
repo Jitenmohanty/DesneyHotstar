@@ -5,7 +5,8 @@ import { selectRecommend } from "../redux/Reducers/movieSlice";
 import { Link } from "react-router-dom";
 
 const Recomended = () => {
-  const movies = useSelector(selectRecommend);
+  const movies = useSelector((state) => state.recommend);
+  console.log(movies);
   return (
     <Container>
       <h4>Recomended for you.</h4>
