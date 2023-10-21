@@ -10,16 +10,16 @@ import { selectUserName } from "../redux/Reducers/userSlice";
 import { setMovies } from "../redux/Reducers/movieSlice";
 import { storage } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import NewDisney from "./NewDisney";
+import Original from "./Original";
+import Trending from "./Trending";
 
 const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true); // Add loading state
-  let recommends = [];
-  let newDisneys = [];
-  let originals = [];
-  let trending = [];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,37 +33,14 @@ const Home = () => {
           ...doc.data(),
         }));
         console.log(data);
-        // const categorizedMovies = {
-        //   recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
-        //   newDisney: data.filter((movie) => movie.type === "new"),
-        //   original: data.filter((movie) => movie.type === "original"),
-        //   trending: data.filter((movie) => movie.type === "trending"),
-        // };
-        // console.log(categorizedMovies.recommend);
-        // console.log(categorizedMovies.newDisney);
-        // console.log(categorizedMovies.original);
-        // console.log(categorizedMovies.trending);
-        // dispatch(
-        //   setMovies({
-        //     recommend: categorizedMovies.recommend,
-        //     newDisney: categorizedMovies.newDisney,
-        //     original: categorizedMovies.original,
-        //     trending: categorizedMovies.trending,
-        //   })
-        // );
+        const categorizedMovies = {
+          recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
+          newDisney: data.filter((movie) => movie.type === "new"),
+          original: data.filter((movie) => movie.type === "original"),
+          trending: data.filter((movie) => movie.type === "trending"),
+        };
 
-        data.map((doc) => {
-          switch (doc.type) {
-            case "recommend":
-              recommends = [...recommends,{id:doc.id,...doc}]
-            case "new":
-              recommends = [...recommends,{id:doc.id,...doc}]
-            case "original":
-              recommends = [...recommends,{id:doc.id,...doc}]
-            case "recommend":
-              recommends = [...recommends,{id:doc.id,...doc}]
-          }
-        });
+        dispatch(setMovies(categorizedMovies));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching movies: ", error);
@@ -79,6 +56,9 @@ const Home = () => {
       <ImgSlider />
       <Viewers />
       {loading ? <h2>Loading ...</h2> : <Recomended />}
+      <Trending/>
+      <NewDisney/>
+      <Original/>
     </Container>
   );
 };
