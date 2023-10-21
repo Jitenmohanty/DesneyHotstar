@@ -191,10 +191,10 @@ const NavMenu = styled.div`
       }
     }
   }
-  /* 
-  @media (max-width: 768px) {
+  
+  @media (max-width: 920px) {
     display: none;
-  }  */
+  } 
 `;
 
 const Login = styled.a`
