@@ -4,6 +4,14 @@ import { auth, provider } from "../firebase";
 import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import movieicon from '../images/movie-icon.svg'
+import Home from '../images/home-icon.svg'
+import Original from '../images/original-icon.svg'
+import Watchlist from '../images/watchlist-icon.svg'
+import Search from '../images/search-icon.svg'
+import Serirs from '../images/series-icon.svg'
+import Diseney from '../images/logo.svg';
+
 import {
   selectUserName,
   selectUserPhoto,
@@ -61,7 +69,7 @@ const Header = (props) => {
   return (
     <Nav>
       <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
+        <img src={Diseney} alt="Disney+" />
       </Logo>
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
@@ -69,27 +77,27 @@ const Header = (props) => {
         <>
           <NavMenu>
             <a href="/home">
-              <img src="/images/home-icon.svg" />
+              <img src={Home} />
               <span>Home</span>
             </a>
             <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
+              <img src={Search} alt="SEARCH" />
               <span>SEARCH</span>
             </a>
             <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+              <img src={Watchlist} alt="WATCHLIST" />
               <span>WATCHLIST</span>
             </a>
             <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
+              <img src={Original} alt="ORIGINALS" />
               <span>ORIGINALS</span>
             </a>
             <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
+              <img src={movieicon} alt="MOVIES" />
               <span>MOVIES</span>
             </a>
             <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
+              <img src={Serirs} alt="SERIES" />
               <span>SERIES</span>
             </a>
           </NavMenu>

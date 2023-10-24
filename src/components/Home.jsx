@@ -13,6 +13,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import NewDisney from "./NewDisney";
 import Original from "./Original";
 import Trending from "./Trending";
+import BgHome from "../images/home-background.png";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,6 @@ const Home = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(data);
         const categorizedMovies = {
           recommend: data.filter((movie) => movie.type === "recommend"), // Use "recommend" here
           newDisney: data.filter((movie) => movie.type === "new"),
@@ -56,9 +56,9 @@ const Home = () => {
       <ImgSlider />
       <Viewers />
       {loading ? <h2>Loading ...</h2> : <Recomended />}
-      <Trending/>
-      <NewDisney/>
-      <Original/>
+      <Trending />
+      <NewDisney />
+      <Original />
     </Container>
   );
 };
@@ -72,8 +72,7 @@ const Container = styled.main`
   padding: 0 calc(3.5vw + 5px);
 
   &:after {
-    background: url("/images/home-background.png") center center / cover
-      no-repeat fixed;
+    background: url(${BgHome}) center center / cover no-repeat fixed;
     content: "";
     position: absolute;
     inset: 0px;

@@ -1,39 +1,46 @@
 import styled from "styled-components";
+import img1 from "../images/viewers-disney.png";
+import img2 from "../images/viewers-pixar.png";
+import img3 from "../images/viewers-marvel.png";
+import img4 from "../images/viewers-starwars.png";
+import img5 from "../images/viewers-national.png";
+import video1 from "../videos/1564674844-disney.mp4";
+import video2 from "../videos/1564676714-pixar.mp4";
+import video3 from "../videos/1564676115-marvel.mp4";
+import video4 from "../videos/1608229455-star-wars.mp4";
+import video5 from "../videos/1564676296-national-geographic.mp4";
 
 const Viewers = (props) => {
   return (
     <Container>
       <Wrap>
-        <img src="/images/viewers-disney.png" alt="" />
+        <img src={img1} alt="" />
         <video autoPlay={true} muted={true} loop={true} playsInline={true}>
-          <source src="/videos/1564674844-disney.mp4" type="video/mp4" />
+          <source src={video1} type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
-        <img src="/images/viewers-pixar.png" alt="" />
+        <img src={img2} alt="" />
         <video autoPlay={true} muted={true} loop={true} playsInline={true}>
-          <source src="/videos/1564676714-pixar.mp4" type="video/mp4" />
+          <source src={video2} type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
-        <img src="/images/viewers-marvel.png" alt="" />
+        <img src={img3} alt="" />
         <video autoPlay={true} muted={true} loop={true} playsInline={true}>
-          <source src="/videos/1564676115-marvel.mp4" type="video/mp4" />
+          <source src={video3} type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
-        <img src="/images/viewers-starwars.png" alt="" />
+        <img src={img4} alt="" />
         <video autoPlay={true} loop={true} muted={true} playsInline={true}>
-          <source src="/videos/1608229455-star-wars.mp4" type="video/mp4" />
+          <source src={video4} type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
-        <img src="/images/viewers-national.png" alt="" />
+        <img src={img5} alt="" />
         <video autoPlay={true} loop={true} muted={true} playsInline={true}>
-          <source
-            src="/videos/1564676296-national-geographic.mp4"
-            type="video/mp4"
-          />
+          <source src={video5} type="video/mp4" />
         </video>
       </Wrap>
     </Container>

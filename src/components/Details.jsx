@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { storage } from "../firebase";
+import GroupIcons from '../images/group-icon.png'
+import PlayWhite from '../images/group-icon.png'
+import PlayBlack from '../images/play-icon-white.png'
 
 const Details = () => {
   const { id } = useParams();
@@ -39,11 +42,11 @@ const Details = () => {
       <ContentMeta>
         <Controls>
           <Player>
-            <img src="/images/play-icon-black.png" alt="" />
+            <img src={PlayBlack} alt="" />
             <span>Play</span>
           </Player>
           <Trailer>
-            <img src="/images/play-icon-white.png" alt="" />
+            <img src={PlayWhite} alt="" />
             <span>Trailer</span>
           </Trailer>
           <AddList>
@@ -52,7 +55,7 @@ const Details = () => {
           </AddList>
           <GroupWatch>
             <div>
-              <img src="/images/group-icon.png" alt="" />
+              <img src={GroupIcons} alt="" />
             </div>
           </GroupWatch>
         </Controls>
