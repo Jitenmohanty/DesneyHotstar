@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { auth, provider } from "../firebase";
 import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import movieicon from '../images/movie-icon.svg'
-import Home from '../images/home-icon.svg'
-import Original from '../images/original-icon.svg'
-import Watchlist from '../images/watchlist-icon.svg'
-import Search from '../images/search-icon.svg'
-import Serirs from '../images/series-icon.svg'
-import Diseney from '../images/logo.svg';
+import { Link, useNavigate } from "react-router-dom";
+import movieicon from "../images/movie-icon.svg";
+import Home from "../images/home-icon.svg";
+import Original from "../images/original-icon.svg";
+import Watchlist from "../images/watchlist-icon.svg";
+import Search from "../images/search-icon.svg";
+import Serirs from "../images/series-icon.svg";
+import Diseney from "../images/logo.svg";
 
 import {
   selectUserName,
@@ -76,10 +76,10 @@ const Header = (props) => {
       ) : (
         <>
           <NavMenu>
-            <a href="/home">
+            <Link to="/home">
               <img src={Home} />
               <span>Home</span>
-            </a>
+            </Link>
             <a>
               <img src={Search} alt="SEARCH" />
               <span>SEARCH</span>
@@ -199,10 +199,10 @@ const NavMenu = styled.div`
       }
     }
   }
-  
+
   @media (max-width: 920px) {
     display: none;
-  } 
+  }
 `;
 
 const Login = styled.a`

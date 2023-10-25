@@ -137,9 +137,9 @@ const Player = styled.button`
   letter-spacing: 1.8px;
   text-align: center;
   text-transform: uppercase;
-  background: rgb (249, 249, 249);
-  border: none;
-  color: rgb(0, 0, 0);
+  background: transparent;
+  border: 2px solid white;
+  color: rgb(245, 234, 234);
 
   img {
     width: 32px;
@@ -147,6 +147,12 @@ const Player = styled.button`
 
   &:hover {
     background: rgb(198, 198, 198);
+    color:black;
+    font-weight:bold;
+    img {
+    background-color:black;
+    width: 20%;
+  }
   }
 
   @media (max-width: 768px) {
